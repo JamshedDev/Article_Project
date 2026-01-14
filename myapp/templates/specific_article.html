@@ -1,0 +1,36 @@
+{% extends 'home.html' %} {% block content %}
+<div class="page-wrapper">
+  <div class="form-container">
+    <h2>Search</h2>
+
+    <form method="GET">
+    <div class="field">
+
+        <input type="text" name="q" placeholder="Search by title or author" value="{{ query|default:'' }}" />
+        <br>
+        <button class="savebtn" type="submit">Search</button>
+    </div>
+    </form>
+  </div>
+
+  {% if query %}
+  <hr />
+
+  <h2>Results for "{{ query }}"</h2>
+
+  {% if results %} {% for i in results %}
+  <h3>Author : {{ i.author }}</h3>
+  <dl>
+    <dt>Title</dt>
+    <dd>{{ i.title }}</dd>
+
+    <dt>Description</dt>
+    <dd>{{ i.description }}</dd>
+  </dl>
+  <hr />
+  {% endfor %}
+{% else %}
+  <p>No articles found.</p>
+  {% endif %} {% endif %}
+</div>
+{% endblock %}

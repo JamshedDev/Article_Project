@@ -1,0 +1,45 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<div class="page-wrapper">
+
+    <div class="form-container">
+        <h2>Create Article</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="field">
+                <label>Title</label>
+                <input type="text" name="title_data" placeholder="Enter title">
+            </div>
+
+            <div class="field">
+                <label>Description</label>
+                <textarea name="description_data" placeholder="Enter description"></textarea>
+            </div>
+
+            <div class="field">
+                <label>Author</label>
+                <input type="text" name="author_data" placeholder="Enter author name">
+            </div>
+
+            <div class="field">
+                <label>Date</label>
+                <input type="date" name="date_data">
+            </div>
+
+            <button class="savebtn" type="submit">Save</button>
+        </form>
+
+        {% if submitted %}
+            <div class="success-msg">
+                Article saved successfully!
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}

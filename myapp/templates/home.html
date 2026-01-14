@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Document{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+        <!-- <div class="mode">
+            <div >
+                <button id="lightMode" onclick="lightBtn()"><img src="{% static 'images/light.png' %}" alt=""></button>
+            </div>
+            <div>
+                <button id="darkMode" onclick="darkBtn()"><img src="{% static 'images/dark.png' %}" alt=""</button>
+            </div>
+
+        </div> -->
+    <header>
+        <div>
+            <a href="{% url 'home' %}"><button>Homepage</button></a>
+        </div>
+        <div>
+            <a href="{% url 'form' %}"><button>Add Article</button></a>
+        </div>
+        <div>
+            <a href="{% url 'article' %}"><button>All Article</button></a>
+        </div>
+        <div>
+            <a href="{% url 'specific' %}"><button>Search</button></a>
+        </div>
+
+    </header>
+    <center>
+        <h1 class="headerh1">{{ type }}</h1>
+    </center>
+    
+    {% block content %}
+    
+    
+    
+    {% endblock %}
+    <footer>
+        <p>&copy; 2024 Article Project. All rights reserved.</p>
+    </footer>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
