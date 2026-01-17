@@ -108,6 +108,17 @@ button:hover{
 }
 
 
+.dltbtn{
+    border-radius: 15px;
+    background-color: lemonchiffon;
+    color: rgb(160, 2, 2);
+    padding: 10px 20px;
+}
+.dltbtn:hover{
+    background-color: rgb(160, 2, 2);
+    color: lemonchiffon;
+}
+
 .savebtn {
     display: block;
     width: 40%;

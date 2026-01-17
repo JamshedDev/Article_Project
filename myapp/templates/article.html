@@ -1,17 +1,20 @@
 {% extends 'home.html' %}
 
 {% block content %}
+<h1>Total No. of Article {{ all_data | length}}</h1>    
 {% for i in all_data %}
 <div class="article_container">
 
-    <h2>Author : {{ i.author }}</h2>
+    <h2>Author : {{ i.author | upper }}</h2>
     
     <dl>
-        <dt>Title :</dt>
+        <!-- <dt>Title :</dt>
         <dd>{{ i.title }}</dd>
         
         <dt>Description :</dt>
-        <dd>{{ i.description }}</dd>
+        <dd>{{ i.description }}</dd> -->
+        <h2><li>{{ i.id }}.{{ i.title | truncatechars:10 }}</li></h2>
+        <button><a href="{% url 'specific' i.id %}">Read More</a></button>
     </dl>
     
 </div>

@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 
-import os
 
 from pathlib import Path
 
@@ -24,14 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-_jn0!d^wsch6x5j67n5355l_$%81e5i9a#*_bm71z+ft##l5ww'
-SECRET_KEY = os.environ.get("SECRET_KEY", "unsafe-dev-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = []
 
-DEBUG = False
 
 
 # Application definition

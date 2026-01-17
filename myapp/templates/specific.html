@@ -1,0 +1,12 @@
+{% extends 'home.html' %}
+ {% block content %}
+
+ <div>
+    <h1>{{data.title}}</h1>
+    <h2>By : {{ data.author }} on {{ data.date }} </h2>
+    <h4>{{ data.description }}</h4>
+    <button><a href="{% url 'delete' data.id %}">Delete</a></button>
+ </div>
+
+
+ {% endblock %}

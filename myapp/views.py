@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from myapp.models import Article
 
 # Create your views here.
@@ -23,23 +23,36 @@ def form_view(request):
 def all_article_view(request):
     type='All The Articles'
     all_data=Article.objects.all()
-
     return render(request,'article.html',{'all_data':all_data,'type':type})
+
+def specific_article_view(request,id):
+    type='Specific Article'
+    data=Article.objects.get(id = id)
+    return render(request,'specific.html',{'data':data,'type':type})
+
+
+
+def delete_view(request,id):
+    type='Delete Article'
+    item=Article.objects.get(id = id)
+    if request.method=='POST':
+        item.delete()
+        return redirect('article')  
+    # all_data=Article.objects.all()
+    return render(request,'delete.html',{'item':item,'type':type})
+    # return render(request,'article.html',{'all_data':all_data,'type':type})
+
+
 
 # def specific_article_view(request):
 #     type='Specific Article'
-#     return render(request,'specific_article.html',{'type':type})
+#     query = request.GET.get('q')
+#     results = []
 
-
-def specific_article_view(request):
-    type='Specific Article'
-    query = request.GET.get('q')
-    results = []
-
-    if query:
-        results = Article.objects.filter(
-            title__icontains=query
-        ) | Article.objects.filter(
-            author__icontains=query
-        )
-    return render(request, 'specific_article.html', {'results': results, 'query': query, 'type': type})
+#     if query:
+#         results = Article.objects.filter(
+#             title__icontains=query
+#         ) | Article.objects.filter(
+#             author__icontains=query
+#         )
+#     return render(request, 'specific_article.html', {'results': results, 'query': query, 'type': type})
